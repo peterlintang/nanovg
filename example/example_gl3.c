@@ -115,8 +115,8 @@ int main()
 		return -1;
 	}
 
-	if (loadDemoData(vg, &data) == -1)
-		return -1;
+//	if (loadDemoData(vg, &data) == -1)
+//		return -1;
 
 	glfwSwapInterval(0);
 
@@ -156,12 +156,25 @@ int main()
 
 		nvgBeginFrame(vg, winWidth, winHeight, pxRatio);
 
+//		nvgSkewX(vg, 0.5);
+//		nvgSkewY(vg, 0.5);
+//		nvgScale(vg, 1.5, 1.5);
+		nvgTranslate(vg, winWidth / 2, winHeight / 2);	// zuo biao xi
+		nvgRotate(vg, NVG_PI / 2 );
+
+		nvgBeginPath(vg);
+		nvgRect(vg, 0, 0, 50, 10);
+		nvgFillColor(vg, nvgRGBA(0,0,255,255));
+		nvgFill(vg);
+
+		/*
 		renderDemo(vg, mx,my, winWidth,winHeight, t, blowup, &data);
 
 		renderGraph(vg, 5,5, &fps);
 		renderGraph(vg, 5+200+5,5, &cpuGraph);
 		if (gpuTimer.supported)
 			renderGraph(vg, 5+200+5+200+5,5, &gpuGraph);
+		*/
 
 		nvgEndFrame(vg);
 
